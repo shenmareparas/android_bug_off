@@ -18,12 +18,12 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  TextEditingController _firstNameController = TextEditingController();
-  TextEditingController _lastNameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _confirmPassController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPassController = TextEditingController();
 
   bool _showpass = false;
   bool _showConfirmPass = false;
@@ -33,7 +33,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           child: Form(
             key: _formKey,
             child: Column(
@@ -82,8 +82,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               fontWeight: FontWeight.normal,
                               fontStyle: FontStyle.italic,
                             ),
-                            border: UnderlineInputBorder(),
-                            contentPadding: EdgeInsets.fromLTRB(8, 18, 8, 16),
+                            border: const UnderlineInputBorder(),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(8, 18, 8, 16),
                           ),
                         ),
                       ),
@@ -104,8 +105,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               fontWeight: FontWeight.normal,
                               fontStyle: FontStyle.italic,
                             ),
-                            border: UnderlineInputBorder(),
-                            contentPadding: EdgeInsets.fromLTRB(8, 18, 8, 16),
+                            border: const UnderlineInputBorder(),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(8, 18, 8, 16),
                           ),
                         ),
                       ),
@@ -137,8 +139,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               fontWeight: FontWeight.normal,
                               fontStyle: FontStyle.italic,
                             ),
-                            border: UnderlineInputBorder(),
-                            contentPadding: EdgeInsets.fromLTRB(8, 18, 8, 16),
+                            border: const UnderlineInputBorder(),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(8, 18, 8, 16),
                           ),
                         ),
                       ),
@@ -173,8 +176,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               fontWeight: FontWeight.normal,
                               fontStyle: FontStyle.italic,
                             ),
-                            border: UnderlineInputBorder(),
-                            contentPadding: EdgeInsets.fromLTRB(8, 18, 8, 16),
+                            border: const UnderlineInputBorder(),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(8, 18, 8, 16),
                           ),
                         ),
                       ),
@@ -268,8 +272,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                     ResponsiveScreen.halfRepWidth(context, 24),
                               ),
                             ),
-                            border: UnderlineInputBorder(),
-                            contentPadding: EdgeInsets.fromLTRB(8, 18, 8, 16),
+                            border: const UnderlineInputBorder(),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(8, 18, 8, 16),
                           ),
                         ),
                       ),
@@ -342,7 +347,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         log(resp.toString());
                         if (resp == "all is well") {
                           Navigator.of(context).pop(MaterialPageRoute(
-                              builder: (context) => Loginscreen()));
+                              builder: (context) => const Loginscreen()));
                         }
                         if (resp ==
                             "The account already exists for that email.") {
@@ -427,7 +432,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       borderRadius: BorderRadius.circular(2),
                       onTap: () {
                         Navigator.of(context).pop(MaterialPageRoute(
-                            builder: (context) => Loginscreen()));
+                            builder: (context) => const Loginscreen()));
                       },
                       child: Text(
                         "Login",

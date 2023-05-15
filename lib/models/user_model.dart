@@ -50,10 +50,10 @@ class CurrentUser {
     }
     String uid = await FirebaseAuth.instance.currentUser!.uid;
     currentUserUid = uid;
-    Map<String, dynamic> data = await FirestoreUserData.getProfileData(uid);
-    List<dynamic> fav = await FirestoreUserData.getFavorites(uid);
-    List<dynamic> cart = await FirestoreUserData.getMyCart(uid);
-    List<dynamic> orders = await FirestoreUserData.getOrders(uid);
+    Map<String, dynamic> data = await FirestoreuserData.getProfileData(uid);
+    List<dynamic> fav = await FirestoreuserData.getFavorites(uid);
+    List<dynamic> cart = await FirestoreuserData.getMyCart(uid);
+    List<dynamic> orders = await FirestoreuserData.getOrders(uid);
     data['lastUpdated'] = DateTime.parse(data['lastUpdated']);
     data['phoneNumber'] = data['phoneNumber'];
     data['fav'] = fav;
@@ -65,7 +65,7 @@ class CurrentUser {
 
   static updateProfile(CurrentUser user) async {
     var db = FirebaseFirestore.instance;
-    var UserData = await db.collection(currentUserUid!).doc("profile").update({
+    var userData = await db.collection(currentUserUid!).doc("profile").update({
       'firstName': user.firstName,
       'lastName': user.lastName,
       'phoneNumber': user.phoneNumber,
@@ -99,7 +99,7 @@ class CurrentUser {
           .signInWithEmailAndPassword(email: email, password: password);
       log(userCred.toString());
       CurrentUser.currentUserUid = userCred.user!.uid;
-      await FirestoreUserData.getProfileData(userCred.user!.uid);
+      await FirestoreuserData.getProfileData(userCred.user!.uid);
       CurrentUser.getCurrentUser();
       return "all is well";
     } on FirebaseAuthException catch (e) {
@@ -117,9 +117,9 @@ class CurrentUser {
     try {
       var userCred = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: user.email, password: pass);
-      userCred.user!.updateDisplayName(user.firstName + " " + user.lastName);
+      userCred.user!.updateDisplayName("${user.firstName} ${user.lastName}");
       log(userCred.toString());
-      await FirestoreUserData.setData(user, userCred.user!.uid);
+      await FirestoreuserData.setData(user, userCred.user!.uid);
       return "all is well";
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -136,7 +136,7 @@ class CurrentUser {
 
 myUrlLauncher(String link) async {
   String url = link;
-  final Uri _url = Uri.parse(url);
+  final Uri url0 = Uri.parse(url);
 
-  await launchUrl(_url, mode: LaunchMode.externalApplication);
+  await launchUrl(url0, mode: LaunchMode.externalApplication);
 }

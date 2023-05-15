@@ -3,8 +3,6 @@ import 'package:engage_files/models/products.dart';
 import 'package:engage_files/models/user_model.dart';
 import 'package:engage_files/responsivescreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class MyCart extends StatefulWidget {
   const MyCart({super.key});
@@ -23,10 +21,10 @@ class _MyCartState extends State<MyCart> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -41,18 +39,19 @@ class _MyCartState extends State<MyCart> {
               Center(
                 child: Text(
                   "You have ${CurrentUser.currentUser?.cart.length ?? [].length} items in your cart",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Center(
                 child: Visibility(
-                  child: Text(
+                  visible: CurrentUser.currentUser!.cart.isEmpty,
+                  child: const Text(
                     "No items in your cart",
                     style: TextStyle(
                       fontSize: 36,
@@ -60,12 +59,11 @@ class _MyCartState extends State<MyCart> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  visible: CurrentUser.currentUser?.cart.length == 0,
                 ),
               ),
               Expanded(
                 child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   itemCount: CurrentUser.currentUser!.cart.length,
                   itemBuilder: (context, index) {
                     return Padding(
@@ -81,8 +79,8 @@ class _MyCartState extends State<MyCart> {
                           );
                         },
                         child: Container(
-                          width: ResponsiveScreen.ScreenWidth,
-                          height: ResponsiveScreen.ScreenHeight! * 0.16,
+                          width: ResponsiveScreen.screenWidth,
+                          height: ResponsiveScreen.screenHeight! * 0.16,
                           decoration: BoxDecoration(
                             color: Colors.blueGrey[100],
                             borderRadius: BorderRadius.circular(10),
@@ -96,7 +94,7 @@ class _MyCartState extends State<MyCart> {
                                   child: Image.network(
                                     productData[index]['thumbnail'],
                                     width:
-                                        ResponsiveScreen.ScreenHeight! * 0.14,
+                                        ResponsiveScreen.screenHeight! * 0.14,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -106,22 +104,21 @@ class _MyCartState extends State<MyCart> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 8,
                                     ),
                                     Text(
                                       productData[index]['name'].length > 20
-                                          ? productData[index]['name']
+                                          ? "${productData[index]['name']
                                                   .toString()
-                                                  .substring(0, 20) +
-                                              "..."
+                                                  .substring(0, 20)}..."
                                           : productData[index]['name'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 4,
                                     ),
                                     Text(
@@ -129,17 +126,16 @@ class _MyCartState extends State<MyCart> {
                                                   .toString()
                                                   .length >
                                               30
-                                          ? productData[index]['description']
+                                          ? "${productData[index]['description']
                                                   .toString()
-                                                  .substring(0, 30) +
-                                              "..."
+                                                  .substring(0, 30)}..."
                                           : productData[index]['description'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 4,
                                     ),
                                     Text(
@@ -148,27 +144,27 @@ class _MyCartState extends State<MyCart> {
                                           .replaceAll("to ", "-")
                                           .replaceAll("C", " ")
                                           .trim(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 4,
                                     ),
                                     Text(
                                       productData[index]['logistics_cost'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 4,
                                     ),
                                     Text(
                                       productData[index]['product_location'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                       ),

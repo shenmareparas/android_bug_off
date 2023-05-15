@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveScreen {
-  static double? ScreenHeight;
-  static double? ScreenWidth;
+  static double? screenHeight;
+  static double? screenWidth;
 
-  static double fullRepHeight(BuildContext context, double _height) {
-    return MediaQuery.of(context).size.height * (_height / ScreenHeight!);
+  static double fullRepHeight(BuildContext context, double height) {
+    return MediaQuery.of(context).size.height * (height / screenHeight!);
   }
 
-  static double halfRepHeight(BuildContext context, double _height) {
-    return MediaQuery.of(context).size.height > ScreenHeight!
-        ? _height
-        : MediaQuery.of(context).size.height * (_height / ScreenHeight!);
+  static double halfRepHeight(BuildContext context, double height) {
+    return MediaQuery.of(context).size.height > screenHeight!
+        ? height
+        : MediaQuery.of(context).size.height * (height / screenHeight!);
   }
 
-  static double fullRepWidth(BuildContext context, double _width) {
-    return MediaQuery.of(context).size.height * (_width / ScreenWidth!);
+  static double fullRepWidth(BuildContext context, double width) {
+    return MediaQuery.of(context).size.height * (width / screenWidth!);
   }
 
-  static double halfRepWidth(BuildContext context, double _width) {
-    return MediaQuery.of(context).size.width > ScreenWidth!
-        ? _width
-        : MediaQuery.of(context).size.height * (_width / ScreenWidth!);
+  static double halfRepWidth(BuildContext context, double width) {
+    return MediaQuery.of(context).size.width > screenWidth!
+        ? width
+        : MediaQuery.of(context).size.height * (width / screenWidth!);
   }
 }

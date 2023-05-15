@@ -14,8 +14,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.black)),
-      body: SafeArea(child: Column()),
+          iconTheme: const IconThemeData(color: Colors.black)),
+      body: const SafeArea(child: Column()),
     );
   }
 }

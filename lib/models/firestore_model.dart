@@ -2,16 +2,15 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:engage_files/models/user_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-class FirestoreUserData {
+class FirestoreuserData {
   Map<String, dynamic> data;
 
-  FirestoreUserData({required this.data});
+  FirestoreuserData({required this.data});
 
   static setData(CurrentUser user, String uid) async {
     var db = FirebaseFirestore.instance;
-    var UserData = await db.collection(uid).doc("profile").set({
+    var userData = await db.collection(uid).doc("profile").set({
       'firstName': user.firstName,
       'lastName': user.lastName,
       'phoneNumber': user.phoneNumber,
@@ -28,7 +27,7 @@ class FirestoreUserData {
   static setOrders(CurrentUser user, String uid) async {
     var db = FirebaseFirestore.instance;
 
-    var UserData = await db.collection(uid).doc("orders").set({
+    var userData = await db.collection(uid).doc("orders").set({
       'data': user.orders,
     });
   }
@@ -36,19 +35,19 @@ class FirestoreUserData {
   static setFavorites(CurrentUser user, String uid) async {
     var db = FirebaseFirestore.instance;
 
-    var UserData = await db.collection(uid).doc("favorites").set({
+    var userData = await db.collection(uid).doc("favorites").set({
       'data': user.fav,
     });
   }
 
   static setMyCart(String uid) async {
     var db = FirebaseFirestore.instance;
-    var UserData = await db.collection(uid).doc("cart").set(
+    var userData = await db.collection(uid).doc("cart").set(
       {
         'data': CurrentUser.currentUser!.cart,
       },
     ).timeout(
-      Duration(seconds: 10),
+      const Duration(seconds: 10),
       onTimeout: () {
         CurrentUser.currentUser!.cart.removeLast();
       },
@@ -63,31 +62,31 @@ class FirestoreUserData {
 
   static getProfileData(String uid) async {
     var db = FirebaseFirestore.instance;
-    var UserData = (await db.collection(uid).doc("profile").get()).data() ?? {};
-    return UserData;
+    var userData = (await db.collection(uid).doc("profile").get()).data() ?? {};
+    return userData;
   }
 
   static getOrders(String uid) async {
     var db = FirebaseFirestore.instance;
-    var UserData = await db.collection(uid).doc("orders").get();
-    return UserData.data()?['data'] ?? [];
+    var userData = await db.collection(uid).doc("orders").get();
+    return userData.data()?['data'] ?? [];
   }
 
   static getFavorites(String uid) async {
     var db = FirebaseFirestore.instance;
-    var UserData = await db.collection(uid).doc("favorites").get();
-    return UserData.data()?['data'] ?? [];
+    var userData = await db.collection(uid).doc("favorites").get();
+    return userData.data()?['data'] ?? [];
   }
 
   static getMyCart(String uid) async {
     var db = FirebaseFirestore.instance;
-    var UserData = await db.collection(uid).doc("cart").get();
-    return UserData.data()?['data'] ?? [];
+    var userData = await db.collection(uid).doc("cart").get();
+    return userData.data()?['data'] ?? [];
   }
 
   static setLastupdated(String uid) async {
     var db = FirebaseFirestore.instance;
-    var UserData = await db.collection(uid).doc("profile").update({
+    var userData = await db.collection(uid).doc("profile").update({
       'lastUpdated': DateTime.now().toIso8601String(),
     });
   }
