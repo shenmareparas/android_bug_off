@@ -10,6 +10,7 @@ Your app will be judged on the basis of usability, UI/UX, bug fixes, features im
 FEATURE LINK : https://qr.page/g/2w5yIulVk43
 
 GIT CLONE
+
 FLUTTER PUB GET
 
 ADD YOUR OWN FIREBASE file (google-services.json) in android > app
