@@ -1,16 +1,15 @@
-# engage_files
+Flutter App Instructions
 
-A new Flutter project.
+First do rigorous testing and find all the bugs in the app and fix them all
+Then go through this feature doc and implement these features given in the list
 
-## Getting Started
+Also you are required implement some innovative ideas that will make your project extraordinary. A mentoring round for the same will commence from 11:30 am.
 
-This project is a starting point for a Flutter application.
+Your app will be judged on the basis of usability, UI/UX, bug fixes, features implementation, & innovation.
 
-A few resources to get you started if this is your first Flutter project:
+FEATURE LINK : https://qr.page/g/2w5yIulVk43
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+GIT CLONE
+FLUTTER PUB GET
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ADD YOUR OWN FIREBASE file (google-services.json) in android > app
