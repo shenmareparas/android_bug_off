@@ -1,4 +1,4 @@
-## Things Added
+## Features Added
 
 Added Material UI
 
